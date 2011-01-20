@@ -11,7 +11,7 @@
 <body>
 <div id="wrap">
   <h1>Soundcloud Demo App</h1>
-  <div id="content"><?php echo $content; ?></div> <!-- end content -->
+  <div id="content"><?php include $content_file . ".html.php"; ?></div> <!-- end content -->
 
 </div> <!-- end wrap -->
 </body>
