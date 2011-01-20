@@ -1,7 +1,13 @@
 <?php
 include 'config.php';
 
+// Default view for testing
 $content_file = "raw_output";
+
+if (!$sc->getAccessToken()) {
+  $authorize_url = $sc->getAuthorizeUrl();
+  $content_file = "authorize_page";
+}
 
 /*
 if (isset($_SESSION['soundcloud'])) {

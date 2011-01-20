@@ -8,6 +8,6 @@ $redirect_uri = '';
 
 include 'lib/soundcloud/Services/Soundcloud.php';
 
-$soundcloud = new Services_Soundcloud($client_id, $client_secret, $redirect_uri);
+$sc = new Services_Soundcloud($client_id, $client_secret, $redirect_uri);
 
 session_start();
