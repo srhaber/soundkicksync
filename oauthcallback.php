@@ -9,7 +9,7 @@ else {
 }
 
 try {
-  $at = $sc->accessToken($code, array(), array(CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST => false));
+  $at = $sc->accessToken($code, array(), $curl_options);
 }
 catch (Exception $e) {
   echo $e->getMessage();

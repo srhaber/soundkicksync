@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<?php include "header_bar.html.php"; ?>
 <div id="wrap">
   <h1>Soundcloud Demo App</h1>
   <div id="content"><?php include $content_file . ".html.php"; ?></div> <!-- end content -->
