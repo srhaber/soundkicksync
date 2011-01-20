@@ -4,7 +4,8 @@ include 'config.php';
 // Default view for testing
 $content_file = "raw_output";
 
-if (!$sc->getAccessToken()) {
+//if (!$sc->getAccessToken()) {
+if (!isset($_SESSION['access_token'])) {
   $authorize_url = $sc->getAuthorizeUrl();
   $content_file = "authorize_page";
 }

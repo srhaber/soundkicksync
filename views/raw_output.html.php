@@ -1,4 +1,4 @@
 <?php
 echo "<pre>";
-print_r($soundcloud);
+print_r($_SESSION);
 echo "</pre>";

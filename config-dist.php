@@ -1,8 +1,9 @@
 <?php
+$base_url = "";
+$redirect_uri = '';
+
 $client_id = '';
 $client_secret = '';
-
-$redirect_uri = '';
 
 // ** DON'T EDIT BELOW THIS LINE **
 
