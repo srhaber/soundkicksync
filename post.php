@@ -1,10 +1,12 @@
 <?php
 include 'config.php';
 
+// Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
   exit("Only POST submissions are accepted.");
 }
 
+// Make sure the access token is set for Soundcloud service calls.
 if (sc_has_access()) {
 	sc_set_access();
 }
@@ -13,15 +15,18 @@ else {
 	header("Location: {$base_url}");
 }
 
-// Process songkick form
+// Processing logic for the songkick form
 if ($_POST['form'] == 'songkick') {
 	$_SESSION['songkick-url'] = $_POST['songkick-url'];
 	
+	// Parse out the artist name from the Songkick URL
 	if (preg_match('/artists\/([^\/]+)\/?/', $_POST['songkick-url'], $matches)) {
 		$artist = $matches[1];
+		// Make API call to Songkick to get tour dates
 		$data = songkick_get_tour_dates($artist);
 	}
 	
+	// Format the tour dates, or display error message if there are no tour dates
 	if (isset($data['resultsPage']['results']['event'])) {
 		$new_desc = "<b>Upcoming Tour Dates</b>\n\n";
 		
@@ -40,10 +45,10 @@ if ($_POST['form'] == 'songkick') {
 	}
 }
 
-// Process description form
+// Processing logic for the description form
 if ($_POST['form'] == 'description') {
 	$postdata = array('user[description]' => $_POST['description']);
-	//exit(print_r($postdata,1));
+	// Make API call to Soundcloud to update the user's profile
 	try {
 	  $response = json_decode($sc->put('me', $postdata, $curl_options), true);
 	}

@@ -70,8 +70,11 @@ function songkick_get_tour_dates($artist) {
 	return $data;
 }
 
-// View helper functions
+/*** View helper functions below ***/
 
+/**
+ * Display an error message at the top of the page.
+ */
 function scv_flash_msg() {
 	if (isset($_SESSION['flash_msg'])) {
 		echo "<div class='flash'>{$_SESSION['flash_msg']}</div>";
@@ -79,6 +82,10 @@ function scv_flash_msg() {
 	}
 }
 
+/**
+ * Populate the text-area with the Songkick tour dates if available.
+ * Otherwise, just show the user's current description.
+ */
 function scv_get_profile_description() {
 	global $profile;
 
