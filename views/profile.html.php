@@ -25,16 +25,16 @@ Location: <?php echo $profile['city']; ?></p>
 </div> <!-- end profile-form -->
 
 <div id="instructions">
-	<h3>Instructions</h3>
-	<p><strong>Step 1 - Enter Songkick URL</strong><br />
+  <h3>Instructions</h3>
+  <p><strong>Step 1 - Enter Songkick URL</strong><br />
 	Enter the URL for an artist's page on Songkick and click the Get Tour Dates from Songkick button.</p>
 	
-	<p><strong>Step 2 - Examine the Content</strong><br />
+  <p><strong>Step 2 - Examine the Content</strong><br />
 	If successful, the tour dates will appear in the Soundcloud profile text area formatted in HTML.</p>
 	
-	<p><strong>Step 3 - Save to Soundcloud</strong><br />
+  <p><strong>Step 3 - Save to Soundcloud</strong><br />
 	Click the Save to Soundcloud button to save this content to your Soundcloud profile description.</p>
 	
-	<p>A small preview of your profile appears at the top of this page, showing your current avatar, username, location, and description.</p>
+  <p>A small preview of your profile appears at the top of this page, showing your current avatar, username, location, and description.</p>
 </div>
 </div> <!-- end profile -->
