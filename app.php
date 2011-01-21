@@ -12,3 +12,7 @@ function sc_store_access_token($at) {
   $_SESSION['scope'] = $at['scope'];
   $_SESSION['refresh_token'] = $at['refresh_token'];  
 }
+
+function sc_authorize() {
+  
+}
