@@ -10,9 +10,9 @@ if (!sc_has_access()) {
   $content_file = "authorize_page";
 }
 else {
-	// Once authorized, we'll have an access token.
-	// Make sure this token is set for the Soundcloud service calls.
-	sc_set_access();
+  // Once authorized, we'll have an access token.
+  // Make sure this token is set for the Soundcloud service calls.
+  sc_set_access();
 
   // Show the user's profile for authorized apps.
   try {
