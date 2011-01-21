@@ -14,8 +14,8 @@ $curl_options = array(
 
 // ** DON'T EDIT BELOW THIS LINE **
 
-include 'lib/soundcloud/Services/Soundcloud.php';
-include 'app.php';
+include 'modules/soundcloud/Services/Soundcloud.php';
+include 'lib.php';
 
 $sc = new Services_Soundcloud($client_id, $client_secret, $redirect_uri);
 
