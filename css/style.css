@@ -38,6 +38,7 @@ body,td,th {
 }
 #description {
   clear: both;
+  margin-bottom: 30px;
 }
 .example {
   font-size: 0.9em;
@@ -47,4 +48,10 @@ body,td,th {
 }
 .form {
   margin-bottom: 35px;
+}
+div.flash {
+  border: 1px solid red;
+  color: red;
+  font-weight: bold;
+  padding: 5px 10px;
 }

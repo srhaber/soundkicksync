@@ -13,16 +13,30 @@ else {
 	header("Location: {$base_url}");
 }
 
+// Process songkick form
+if ($_POST['form'] == 'songkick') {
+	$_SESSION['songkick-url'] = $_POST['songkick-url'];
+	
+	if (preg_match('/artists\/([^\/]+)\/?/', $_POST['songkick-url'], $matches)) {
+		$artist = $matches[1];
+		//$response = songkick_get_tour_dates();
+		$_SESSION['new_description'] = "New description here!";
+	}
+	else {
+		$_SESSION['new_description'] = "";
+		$_SESSION['flash_msg'] = "Error: Unable to parse artist name from Songkick URL!";
+	}
+}
+
 // Process description form
 if ($_POST['form'] == 'description') {
 	$postdata = array('user[description]' => $_POST['description']);
-
 	try {
 	  $response = json_decode($sc->put('me', $postdata, $curl_options), true);
 	}
 	catch (Exception $e) {
 	  exit($e->getMessage());
 	}
-
-	header("Location: {$base_url}");
 }
+
+header("Location: {$base_url}");

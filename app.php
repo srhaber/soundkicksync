@@ -41,3 +41,37 @@ function sc_set_access() {
 
   $sc->setAccessToken($_SESSION['access_token']);  
 }
+
+/**
+ * Make an API call to Songkick to get the tour dates
+ *
+ * @param $artist
+ *  The name of the artist
+ * @return
+ *  The response of the API call.
+ */
+function songkick_get_tour_dates($artist) {
+	
+}
+
+// View helper functions
+
+function scv_flash_msg() {
+	if (isset($_SESSION['flash_msg'])) {
+		echo "<div class='flash'>{$_SESSION['flash_msg']}</div>";
+		$_SESSION['flash_msg'] = NULL;
+	}
+}
+
+function scv_get_profile_description() {
+	global $profile;
+
+	if (isset($_SESSION['new_description'])) {
+		echo $_SESSION['new_description'];
+		// Remove the new description from future requests
+		$_SESSION['new_description'] = NULL;		
+	}
+	else {
+		echo $profile['description'];
+	}
+}
