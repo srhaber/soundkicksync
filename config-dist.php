@@ -8,6 +8,8 @@ $base_url = '';
 
 /**
  * The redirect URI is used for the oauth2 callback.
+ * Make sure this matches the Redirect URI on the Soundcloud app page.
+ * http://soundcloud.com/you/apps/[title]/edit
  */
 $redirect_uri = $base_url . '/oauthcallback.php';
 
