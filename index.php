@@ -1,10 +1,10 @@
 <?php
 include 'config.php';
 
-// Default view for testing
+// Default view file, used for testing
 $content_file = "raw_output";
 
-// Check if we have an access token yet
+// Check if we already have an access token
 if (!sc_has_access()) {
   $authorize_url = $sc->getAuthorizeUrl();
   $content_file = "authorize_page";
