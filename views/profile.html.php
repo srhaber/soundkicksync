@@ -6,22 +6,22 @@ Location: <?php echo $profile['city']; ?></p>
 <div id="description"><p><?php echo nl2br(stripslashes($profile['description'])); ?></p></div>
 
 <div class="form">
-	<form action="post.php" method="post" accept-charset="utf-8">
-		<label for="songkick-url">Songkick Artist URL:</label><br />
-		<input type="text" name="songkick-url" value="<?php echo (isset($_SESSION['songkick-url'])) ? htmlentities($_SESSION['songkick-url']) : "http://www.songkick.com/artists/"; ?>" id="songkick-url" size="60" />
-		<p class='example'><em>E.g., http://www.songkick.com/artists/383845-imogen-heap</em><p>
-		<input type="hidden" name="form" value="songkick" />
-		<p><input type="submit" value="Get Tour Dates from Songkick"></p>
-	</form>
-</div> <!-- end songkick-form -->
+  <form action="post.php" method="post" accept-charset="utf-8">
+    <label for="songkick-url">Songkick Artist URL:</label><br />
+    <input type="text" name="songkick-url" value="<?php echo (isset($_SESSION['songkick-url'])) ? htmlentities($_SESSION['songkick-url']) : "http://www.songkick.com/artists/"; ?>" id="songkick-url" size="60" />
+    <p class='example'><em>E.g., http://www.songkick.com/artists/383845-imogen-heap</em><p>
+      <input type="hidden" name="form" value="songkick" />
+      <p><input type="submit" value="Get Tour Dates from Songkick"></p>
+    </form>
+  </div> <!-- end songkick-form -->
 
 <div class="form">
-	<form action="post.php" method="post" accept-charset="utf-8">
-		<label for="form-description">Soundcloud profile:</label><br />
-		<textarea name="description" rows="10" cols="80" id="form-description"><?php scv_get_profile_description(); ?></textarea>
-		<input type="hidden" name="form" value="description" />
-		<p><input type="submit" value="Save to Soundcloud"></p>
-	</form>
+  <form action="post.php" method="post" accept-charset="utf-8">
+    <label for="form-description">Soundcloud profile:</label><br />
+    <textarea name="description" rows="10" cols="80" id="form-description"><?php scv_get_profile_description(); ?></textarea>
+    <input type="hidden" name="form" value="description" />
+    <p><input type="submit" value="Save to Soundcloud"></p>
+  </form>
 </div> <!-- end profile-form -->
 
 <div id="instructions">
@@ -37,9 +37,4 @@ Location: <?php echo $profile['city']; ?></p>
 	
 	<p>A small preview of your profile appears at the top of this page, showing your current avatar, username, location, and description.</p>
 </div>
-<!--
-<pre>
-<?php print_r($profile); ?>
-</pre>
--->
 </div> <!-- end profile -->
