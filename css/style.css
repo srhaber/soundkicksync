@@ -39,3 +39,12 @@ body,td,th {
 #description {
   clear: both;
 }
+.example {
+  font-size: 0.9em;
+  font-weight: italic;
+  margin-top: 0;
+  color: #666r;
+}
+.form {
+  margin-bottom: 35px;
+}

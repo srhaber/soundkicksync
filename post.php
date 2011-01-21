@@ -13,13 +13,16 @@ else {
 	header("Location: {$base_url}");
 }
 
-$postdata = array('user[description]' => $_POST['description']);
+// Process description form
+if ($_POST['form'] == 'description') {
+	$postdata = array('user[description]' => $_POST['description']);
 
-try {
-  $response = json_decode($sc->put('me', $postdata, $curl_options), true);
-}
-catch (Exception $e) {
-  exit($e->getMessage());
-}
+	try {
+	  $response = json_decode($sc->put('me', $postdata, $curl_options), true);
+	}
+	catch (Exception $e) {
+	  exit($e->getMessage());
+	}
 
-header("Location: {$base_url}");
+	header("Location: {$base_url}");
+}
