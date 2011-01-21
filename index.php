@@ -5,24 +5,12 @@ include 'config.php';
 $content_file = "raw_output";
 
 // Check if we have an access token yet
-if (!isset($_SESSION['access_token'])) {
+if (!sc_has_access()) {
   $authorize_url = $sc->getAuthorizeUrl();
   $content_file = "authorize_page";
 }
 else {
-  // Check if we need to get a new access token
-  if ($_SESSION['expiration_time'] < time()) {
-    try {
-      $at = $sc->accessTokenRefresh($_SESSION['refresh_token'], array(), $curl_options);
-    }
-    catch (Exception $e) {
-      exit($e->getMessage());
-    }
-    
-    sc_store_access_token($at);
-  }
-
-  $sc->setAccessToken($_SESSION['access_token']);
+	sc_set_access();
 
   // Show profile info
   try {
