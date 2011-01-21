@@ -10,7 +10,18 @@ if (!isset($_SESSION['access_token'])) {
   $content_file = "authorize_page";
 }
 else {
-  // TO-DO: Check if we need a new access token, use refresh token
+  // Check if we need to get a new access token
+  if ($_SESSION['expiration_time'] < time()) {
+    try {
+      $at = $sc->accessTokenRefresh($_SESSION['refresh_token'], array(), $curl_options);
+    }
+    catch (Exception $e) {
+      exit($e->getMessage());
+    }
+    
+    sc_store_access_token($at);
+  }
+
   $sc->setAccessToken($_SESSION['access_token']);
 
   // Show profile info

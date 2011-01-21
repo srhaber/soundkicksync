@@ -12,15 +12,11 @@ try {
   $at = $sc->accessToken($code, array(), $curl_options);
 }
 catch (Exception $e) {
-  echo $e->getMessage();
-  die();
+  exit($e->getMessage());
 }
 
 // Save access token in session data
-$_SESSION['access_token'] = $at['access_token'];
-$_SESSION['expiration_time'] = $at['expires_in'] + time();
-$_SESSION['scope'] = $at['scope'];
-$_SESSION['refresh_token'] = $at['refresh_token'];
+sc_store_access_token($at);
 
 // Redirect back to main page
 header("Location: {$base_url}");
