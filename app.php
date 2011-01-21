@@ -13,10 +13,17 @@ function sc_store_access_token($at) {
   $_SESSION['refresh_token'] = $at['refresh_token'];  
 }
 
+/** 
+ * Return true if client has an access token.
+ */
 function sc_has_access() {
 	return isset($_SESSION['access_token']);
 }
 
+/** 
+ * Set the access token for use in the $sc object.  Get a new
+ * token if the current one expired.
+ */
 function sc_set_access() {
 	global $sc;
 	

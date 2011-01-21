@@ -1,9 +1,11 @@
 <?php
-$base_url = "";
+$base_url = '';
 $redirect_uri = '';
 
 $client_id = '';
 $client_secret = '';
+
+$songkick_api_key = '';
 
 $curl_options = array(
   CURLOPT_SSL_VERIFYPEER => false, 

@@ -9,7 +9,7 @@ if (sc_has_access()) {
 	sc_set_access();
 }
 else {
-	// User does not have access.  He/she must re-authorize the app.
+	// Client does not have access.  The user must re-authorize the app.
 	header("Location: {$base_url}");
 }
 
