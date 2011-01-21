@@ -19,8 +19,18 @@ if ($_POST['form'] == 'songkick') {
 	
 	if (preg_match('/artists\/([^\/]+)\/?/', $_POST['songkick-url'], $matches)) {
 		$artist = $matches[1];
-		//$response = songkick_get_tour_dates();
-		$_SESSION['new_description'] = "New description here!";
+		$data = songkick_get_tour_dates($artist);
+		
+		$new_desc = "<b>Upcoming Tour Dates</b>\n\n";
+		
+		foreach($data['resultsPage']['results']['event'] as $event) {
+			$date = date('M j, Y', strtotime($event['start']['date']));
+			$location = $event['location']['city'];
+			$uri = $event['uri'];
+			$new_desc .= "<a href=\"{$uri}\" title=\"{$date} - {$location}\">{$date} - {$location}</a>\n";
+		}
+		
+		$_SESSION['new_description'] = $new_desc;
 	}
 	else {
 		$_SESSION['new_description'] = "";
@@ -31,6 +41,7 @@ if ($_POST['form'] == 'songkick') {
 // Process description form
 if ($_POST['form'] == 'description') {
 	$postdata = array('user[description]' => $_POST['description']);
+	//exit(print_r($postdata,1));
 	try {
 	  $response = json_decode($sc->put('me', $postdata, $curl_options), true);
 	}

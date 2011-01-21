@@ -3,7 +3,7 @@
 <h3><?php echo $profile['full_name']; ?></h3>
 <p><strong><?php echo $profile['username']; ?></strong><br />
 Location: <?php echo $profile['city']; ?></p>
-<div id="description"><p><?php echo nl2br($profile['description']); ?></p></div>
+<div id="description"><p><?php echo nl2br(stripslashes($profile['description'])); ?></p></div>
 
 <div class="form">
 	<form action="post.php" method="post" accept-charset="utf-8">

@@ -25,7 +25,7 @@ function sc_has_access() {
  * token if the current one expired.
  */
 function sc_set_access() {
-	global $sc;
+	global $sc, $curl_options;
 	
   // Check if we need to get a new access token
   if ($_SESSION['expiration_time'] < time()) {
@@ -51,7 +51,23 @@ function sc_set_access() {
  *  The response of the API call.
  */
 function songkick_get_tour_dates($artist) {
+	global $songkick_api_key;
 	
+	$url = 'http://api.songkick.com/api/3.0/artists/'.$artist.'/calendar.json?apikey='.$songkick_api_key;
+	$ch = curl_init();
+	
+	$options = array(
+		CURLOPT_URL => $url,
+		CURLOPT_HEADER => false,
+		CURLOPT_RETURNTRANSFER => true,	
+	);
+	
+	curl_setopt_array($ch, $options);
+	
+	$data = json_decode(curl_exec($ch), 1);
+	curl_close($ch);
+	
+	return $data;
 }
 
 // View helper functions
@@ -72,6 +88,6 @@ function scv_get_profile_description() {
 		$_SESSION['new_description'] = NULL;		
 	}
 	else {
-		echo $profile['description'];
+		echo stripslashes($profile['description']);
 	}
 }
