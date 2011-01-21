@@ -19,6 +19,7 @@ Additionally, you'll need to [apply for an api key](http://www.songkick.com/api_
 1. Git clone this project to a web server and run the following commands to download the git submodules:
 
 	`git submodule init`
+
 	`git submodule update`
 
 1. Copy the config-dist.php to config.php.
