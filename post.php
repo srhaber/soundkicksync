@@ -20,7 +20,9 @@ if ($_POST['form'] == 'songkick') {
 	if (preg_match('/artists\/([^\/]+)\/?/', $_POST['songkick-url'], $matches)) {
 		$artist = $matches[1];
 		$data = songkick_get_tour_dates($artist);
-		
+	}
+	
+	if (isset($data['resultsPage']['results']['event'])) {
 		$new_desc = "<b>Upcoming Tour Dates</b>\n\n";
 		
 		foreach($data['resultsPage']['results']['event'] as $event) {
@@ -34,7 +36,7 @@ if ($_POST['form'] == 'songkick') {
 	}
 	else {
 		$_SESSION['new_description'] = "";
-		$_SESSION['flash_msg'] = "Error: Unable to parse artist name from Songkick URL!";
+		$_SESSION['flash_msg'] = "Error: Unable to retrieve tour dates from Songkick for this artist!";
 	}
 }
 
